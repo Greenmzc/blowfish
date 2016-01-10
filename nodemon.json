@@ -1,0 +1,11 @@
+{
+  "ignore": [
+    "src/client/"
+  ],
+  "watch": [
+    "src/"
+  ],
+  "execMap": {
+    "js": "node --harmony"
+  }
+}
