@@ -6,7 +6,7 @@ Isomorphic Application
 ## Installation
 ```bash
 $ git clone https://github.com/Phieo/blowfish.git
-$ npm install
+$ cd blowfish && npm install
 ```
 
 ### Develop

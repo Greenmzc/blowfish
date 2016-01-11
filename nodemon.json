@@ -1,9 +1,9 @@
 {
   "ignore": [
-    "src/client/"
+    "client"
   ],
   "watch": [
-    "src/"
+    "."
   ],
   "execMap": {
     "js": "node --harmony"

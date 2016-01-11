@@ -3,7 +3,7 @@ var path = require('path');
 var fs = require('fs');
 
 var entries = {};
-var rootPath = path.join(__dirname, 'src/client/apps/');
+var rootPath = path.join(__dirname, 'client/apps/');
 
 (function loop(pathStr) {
   var state = fs.statSync(pathStr);
@@ -34,7 +34,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, "dev"),
+    path: path.join(__dirname, "client/dev"),
     filename: '[name].js',
     chunckFilename: '[chunkhash].js'
   },
