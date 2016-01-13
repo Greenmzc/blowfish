@@ -3,7 +3,8 @@
     "client"
   ],
   "watch": [
-    "."
+    "server",
+    "common"
   ],
   "execMap": {
     "js": "node --harmony"

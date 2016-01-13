@@ -1,6 +1,9 @@
 var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
 
 var entries = {};
 var rootPath = path.join(__dirname, 'client/apps/');
@@ -22,16 +25,22 @@ var rootPath = path.join(__dirname, 'client/apps/');
   }
 }(rootPath));
 
+entries.vendor = ['react', 'react-dom'];
+
 module.exports = {
   entry: entries,
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        exclude: ['node_modules'],
-        loader: 'babel'
-      }
+      { test: /\.js$/, exclude: ['node_modules'], loader: 'babel' },
+      //css modules https://github.com/css-modules/webpack-demo
+      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader",
+        "css-loader?modules&importLoaders=1&localIdentName=[1]-[2]-[local]&localIdentRegExp=.*\/.*\/(.*)\/(.*)\/!postcss-loader") }
     ]
+  },
+  postcss() {
+    return {
+      defaults: [autoprefixer, precss],
+    };
   },
   output: {
     path: path.join(__dirname, "client/dev"),
@@ -39,8 +48,18 @@ module.exports = {
     chunckFilename: '[chunkhash].js'
   },
   resolve: {
-    extensions: ['', '.js']
+    alias: {
+      'common': path.resolve(__dirname, 'common'),
+      'components': path.resolve(__dirname, 'common/components'),
+      'core': path.resolve(__dirname, 'common/core'),
+      'base': path.resolve(__dirname, 'common/base')
+    },
+    extensions: ['', '.js', 'jsx']
   },
   watch: true,
-  devtool: "source-map"
+  devtool: "source-map",
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+    new ExtractTextPlugin('[name].css', { allChunks: true })
+  ]
 };
