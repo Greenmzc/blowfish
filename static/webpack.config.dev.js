@@ -6,7 +6,7 @@ var precss = require('precss');
 var autoprefixer = require('autoprefixer');
 
 var entries = {};
-var rootPath = path.join(__dirname, 'client/apps/');
+var rootPath = path.join(__dirname, 'apps/');
 
 (function loop(pathStr) {
   var state = fs.statSync(pathStr);
@@ -43,16 +43,15 @@ module.exports = {
     };
   },
   output: {
-    path: path.join(__dirname, "client/dev"),
+    path: path.join(__dirname, "dev"),
     filename: '[name].js',
     chunckFilename: '[chunkhash].js'
   },
   resolve: {
     alias: {
-      'common': path.resolve(__dirname, 'common'),
-      'components': path.resolve(__dirname, 'common/components'),
-      'core': path.resolve(__dirname, 'common/core'),
-      'base': path.resolve(__dirname, 'common/base')
+      'components': path.resolve(__dirname, 'components'),
+      'core': path.resolve(__dirname, 'core'),
+      'base': path.resolve(__dirname, 'base')
     },
     extensions: ['', '.js', 'jsx']
   },

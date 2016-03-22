@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon -e js,ejs server/app.js",
-    "dev:client": "webpack --config webpack.config.dev.js",
+    "dev:server": "nodemon -i static -e json,ejs,js app.js",
+    "dev:client": "webpack --config static/webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
