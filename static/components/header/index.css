@@ -1,0 +1,13 @@
+@import "../../base/styles/_var.css";
+
+.wrapper {
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+}
+
+.description {
+  font-size: 24px;
+}

@@ -1,5 +1,6 @@
 @import "../../base/styles/_var.css";
 
-.a {
-  color: $black;
+.content {
+  margin: 0 auto;
+  text-align: center;
 }

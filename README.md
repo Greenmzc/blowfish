@@ -1,4 +1,4 @@
 
 # Blowfish
 
-scaffold tool
+:blowfish: A Blog

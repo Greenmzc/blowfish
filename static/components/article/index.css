@@ -1,0 +1,13 @@
+@import "../../base/styles/_var.css";
+
+.post {
+  max-width: 710px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.face {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
