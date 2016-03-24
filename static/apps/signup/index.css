@@ -1,0 +1,16 @@
+@import "../../base/styles/_var.css";
+@import "../../base/styles/_common.css";
+
+.username,
+.password {
+  outline: none;
+}
+
+.submit {
+  display: block;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid $black;
+}

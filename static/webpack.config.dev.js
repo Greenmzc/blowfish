@@ -50,7 +50,7 @@ module.exports = {
   resolve: {
     alias: {
       'components': path.resolve(__dirname, 'components'),
-      'core': path.resolve(__dirname, 'core'),
+      'mixins': path.resolve(__dirname, 'mixins'),
       'base': path.resolve(__dirname, 'base')
     },
     extensions: ['', '.js', 'jsx']

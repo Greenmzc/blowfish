@@ -1,0 +1,18 @@
+a {
+  text-decoration: none;
+}
+
+.apps-signup-username, .apps-signup-password {
+  outline: none;
+}
+
+.apps-signup-submit {
+  display: block;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid #000;
+}
+
+/*# sourceMappingURL=signup.css.map*/

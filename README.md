@@ -1,4 +1,4 @@
 
 # Blowfish
 
-:blowfish: A Blog
+:blowfish: A Blog `only support Chrome`
