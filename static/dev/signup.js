@@ -75,7 +75,9 @@ webpackJsonp([3],{
 	          password: md5(this.state.password)
 	        })
 	      }).then(function (data) {
-	        console.log(data);
+	        if (data.isSuccess) {
+	          location.reload();
+	        }
 	      });
 	    }
 	  }, {
@@ -424,12 +426,15 @@ webpackJsonp([3],{
 	
 	  var _ref$method = _ref.method;
 	  var method = _ref$method === undefined ? 'GET' : _ref$method;
+	  var _ref$credentials = _ref.credentials;
+	  var credentials = _ref$credentials === undefined ? 'same-origin' : _ref$credentials;
 	  var _ref$headers = _ref.headers;
 	  var headers = _ref$headers === undefined ? { 'Content-Type': 'application/json' } : _ref$headers;
 	  var _ref$body = _ref.body;
 	  var body = _ref$body === undefined ? '' : _ref$body;
 	
 	  return fetch(url, {
+	    credentials: credentials,
 	    method: method,
 	    headers: headers,
 	    body: body

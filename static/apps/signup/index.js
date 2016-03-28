@@ -52,7 +52,9 @@ class Signup extends React.Component {
         password: md5(this.state.password)
       })
     }).then(function(data) {
-console.log(data);
+      if (data.isSuccess) {
+        location.reload();
+      }
     })
 
   }
