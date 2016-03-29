@@ -11,7 +11,7 @@ console.log(this.session.user);
 
 exports.authUser = function* (next) {
   if (this.session.user) {
-console.log('no session user');
+console.log(this.session.user);
   } else {
     //signed设置成true会去匹配blowfish.sig,如果不匹配返回undefined
     this.session.user = this.cookies.get(config.auth_cookie_name, {

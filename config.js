@@ -6,14 +6,15 @@ const config = {
   allow_signup: true,
   security_key: ['blowfish is handsome'],
 
-  cookie_options: {
+  cookie_opts: {
     expires: new Date(Date.now() + 1209600000), //2 weeks
     httpOnly: true,
     signed: true,
     path: '/',
-    domain: '.fangyi.me'
+    domain: 'fangyi.me'
   },
-  auth_cookie_name: 'blowfish'
+  auth_cookie_name: 'blowfish',
+  db: 'mongodb://127.0.0.1/blowfish'
 };
 
 module.exports = config;

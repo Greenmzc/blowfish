@@ -76,7 +76,7 @@ webpackJsonp([3],{
 	        })
 	      }).then(function (data) {
 	        if (data.isSuccess) {
-	          location.reload();
+	          // location.reload();
 	        }
 	      });
 	    }

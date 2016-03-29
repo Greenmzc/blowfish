@@ -53,7 +53,7 @@ class Signup extends React.Component {
       })
     }).then(data => {
       if (data.isSuccess) {
-        location.reload();
+        // location.reload();
       }
     });
 
