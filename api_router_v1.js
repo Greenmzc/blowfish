@@ -1,4 +1,5 @@
 const config = require('./config');
+const assign = require('object-assign');
 
 const router = require('koa-router')({
   prefix: '/api'
@@ -6,16 +7,7 @@ const router = require('koa-router')({
 
 router.post('/signup', function* () {
   if (config.allow_signup) {
-
-    //1209600000 = 2 weeks
-    this.cookies.set(config.auth_cookie_name, 'sndn', {
-      expires: new Date(Date.now() + config.cookie_expires_time),
-      httpOnly: true,
-      signed: true,
-      path: '/',
-      domain: '.blowfish.com'
-    });
-
+    this.cookies.set(config.auth_cookie_name, 'what', config.cookie_options);
     this.body = {
       isSuccess: true,
       data: {}
@@ -25,6 +17,17 @@ router.post('/signup', function* () {
       isSuccess: false,
       message: '暂时不能注册'
     }
+  }
+});
+
+router.post('/signout', function* () {
+  this.session = null;
+  var options = assign(config.cookie_options, { expires: new Date(0) });
+  this.cookies.set(config.auth_cookie_name, '', options);
+
+  this.body = {
+    isSuccess: true,
+    data: {}
   }
 });
 

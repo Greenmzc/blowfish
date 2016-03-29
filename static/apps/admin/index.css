@@ -1,5 +1,2 @@
 @import "../../base/styles/_var.css";
-
-a {
-  color: $black;
-}
+@import "../../base/styles/_common.css";
