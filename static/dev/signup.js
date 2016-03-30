@@ -72,7 +72,8 @@ webpackJsonp([3],{
 	        headers: undefined,
 	        body: JSON.stringify({
 	          username: this.state.username,
-	          password: md5(this.state.password)
+	          password: md5(this.state.password),
+	          email: this.state.email
 	        })
 	      }).then(function (data) {
 	        if (data.isSuccess) {
@@ -86,6 +87,7 @@ webpackJsonp([3],{
 	      return React.createElement(
 	        'div',
 	        null,
+	        React.createElement('input', { className: styles.email, placeholder: 'email', onBlur: this.handleBlur.bind(this, 'email') }),
 	        React.createElement('input', { className: styles.name, placeholder: 'username', onBlur: this.handleBlur.bind(this, 'username') }),
 	        React.createElement('input', { type: 'password', className: styles.password, onBlur: this.handleBlur.bind(this, 'password'), placeholder: 'password' }),
 	        React.createElement(

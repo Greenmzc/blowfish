@@ -49,7 +49,8 @@ class Signup extends React.Component {
       headers: undefined,
       body: JSON.stringify({
         username: this.state.username,
-        password: md5(this.state.password)
+        password: md5(this.state.password),
+        email: this.state.email
       })
     }).then(data => {
       if (data.isSuccess) {
@@ -62,6 +63,7 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
+        <input className={styles.email} placeholder="email" onBlur={this.handleBlur.bind(this, 'email')} />
         <input className={styles.name} placeholder="username" onBlur={this.handleBlur.bind(this, 'username')} />
         <input type="password" className={styles.password} onBlur={this.handleBlur.bind(this, 'password')} placeholder="password" />
         <a href="javascript:void(0)" className={styles.submit} onClick={this.handleClick.bind(this)}>sign up</a>

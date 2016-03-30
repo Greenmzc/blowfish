@@ -1,7 +1,6 @@
 const config = require('../config');
 
 exports.adminRequired = function* (next) {
-console.log(this.session.user);
   if (this.session.user == undefined) {
     this.redirect('/signup');
   } else {

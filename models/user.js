@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   email: { type: String },
   avatar: { type: String },
   signature: { type: String },
+  date_in: { type: String, default: Date.now }
 });
 
 UserSchema.index({ username: 1 }, { unique: true });

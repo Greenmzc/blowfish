@@ -1,14 +1,28 @@
 const assign = require('object-assign');
 const config = require('../../config');
-const User = require('../../proxy/user');
-console.log(config.cookie_opts);
+const User = require('../../proxy').User;
+
 exports.signup = function* () {
   if (config.allow_signup) {
-    this.cookies.set(config.auth_cookie_name, 'what', config.cookie_opts);
-    this.body = {
-      isSuccess: true,
-      data: {}
+    const body = this.request.body;
+    const username = body.username;
+    const password = body.password;
+    const email = body.email;
+
+    try {
+      const result = yield User.createCount(username, password, email);
+      this.cookies.set(config.auth_cookie_name, 'what', config.cookie_opts);
+      this.body = {
+        isSuccess: true,
+        data: {}
+      }
+    } catch(e) {
+      this.body = {
+        isSuccess: false,
+        message: 'internal error'
+      }
     }
+
   } else {
     this.body = {
       isSuccess: false,
