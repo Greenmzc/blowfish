@@ -7,6 +7,7 @@ const serve = require('koa-static');
 const session = require('koa-generic-session');
 const redisStore = require('koa-redis');
 const views = require('koa-views');
+const logger = require('./common/logger');
 
 app.use(views(path.resolve(__dirname, 'views'), {
   cache: true,

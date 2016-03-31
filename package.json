@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon -i static -e json,ejs,js app.js",
+    "dev:server": "NODE_ENV=development nodemon -i static -e json,ejs,js app.js",
     "dev:client": "webpack --config static/webpack.config.dev.js",
+    "start": "NODE_ENV=production pm2 start app.js --name \"blowfish\" --max-memory-restart 400M",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "koa-router": "^5.3.0",
     "koa-static": "^2.0.0",
     "koa-views": "^4.1.0",
+    "log4js": "^0.6.33",
     "md5": "^2.1.0",
     "mongoose": "^4.4.10",
     "node-uuid": "^1.4.7",
