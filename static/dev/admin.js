@@ -15,8 +15,8 @@ webpackJsonp([0],{
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var styles = __webpack_require__(177);
-	var ajax = __webpack_require__(175);
+	var styles = __webpack_require__(159);
+	var ajax = __webpack_require__(160);
 	
 	var Admin = function (_React$Component) {
 	  _inherits(Admin, _React$Component);
@@ -65,12 +65,19 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 175:
+/***/ 159:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 160:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(176);
+	__webpack_require__(161);
 	
 	function ajax(url) {
 	  var _ref = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
@@ -98,7 +105,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 176:
+/***/ 161:
 /***/ function(module, exports) {
 
 	(function (self) {
@@ -488,13 +495,6 @@ webpackJsonp([0],{
 	  };
 	  self.fetch.polyfill = true;
 	})(typeof self !== 'undefined' ? self : this);
-
-/***/ },
-
-/***/ 177:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ }
 

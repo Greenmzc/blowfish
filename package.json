@@ -1,7 +1,7 @@
 {
   "name": "blowfish",
   "version": "0.0.1",
-  "description": "",
+  "description": "koa mongodb react blog webpack",
   "main": "index.js",
   "scripts": {
     "dev:server": "NODE_ENV=development nodemon -i static -e json,ejs,js app.js",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Phieo/blowfish#readme",
   "dependencies": {
     "ejs": "^2.3.4",
+    "eventproxy": "^0.3.4",
     "isomorphic-fetch": "^2.2.0",
     "koa": "^1.1.2",
     "koa-body": "^1.4.0",

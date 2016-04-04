@@ -7,11 +7,11 @@ webpackJsonp([1],{
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var styles = __webpack_require__(159);
-	var Header = __webpack_require__(160);
-	var List = __webpack_require__(162);
-	var Pagination = __webpack_require__(166);
-	var Footer = __webpack_require__(168);
+	var styles = __webpack_require__(162);
+	var Header = __webpack_require__(163);
+	var List = __webpack_require__(165);
+	var Pagination = __webpack_require__(169);
+	var Footer = __webpack_require__(171);
 	
 	ReactDOM.render(React.createElement(
 	  'div',
@@ -24,14 +24,14 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 159:
+/***/ 162:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 160:
+/***/ 163:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45,7 +45,7 @@ webpackJsonp([1],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(1);
-	var styles = __webpack_require__(161);
+	var styles = __webpack_require__(164);
 	
 	var Header = function (_React$Component) {
 	  _inherits(Header, _React$Component);
@@ -85,7 +85,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 161:
+/***/ 164:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
@@ -93,7 +93,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 162:
+/***/ 165:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -107,8 +107,8 @@ webpackJsonp([1],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(1);
-	var styles = __webpack_require__(163);
-	var Article = __webpack_require__(164);
+	var styles = __webpack_require__(166);
+	var Article = __webpack_require__(167);
 	
 	var List = function (_React$Component) {
 	  _inherits(List, _React$Component);
@@ -147,7 +147,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 163:
+/***/ 166:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
@@ -155,7 +155,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 164:
+/***/ 167:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -169,7 +169,7 @@ webpackJsonp([1],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(1);
-	var styles = __webpack_require__(165);
+	var styles = __webpack_require__(168);
 	
 	var Article = function (_React$Component) {
 	  _inherits(Article, _React$Component);
@@ -246,7 +246,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 165:
+/***/ 168:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
@@ -254,7 +254,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 166:
+/***/ 169:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -268,7 +268,7 @@ webpackJsonp([1],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(1);
-	var styles = __webpack_require__(167);
+	var styles = __webpack_require__(170);
 	
 	var Pagination = function (_React$Component) {
 	  _inherits(Pagination, _React$Component);
@@ -328,7 +328,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 167:
+/***/ 170:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
@@ -336,7 +336,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 168:
+/***/ 171:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -350,7 +350,7 @@ webpackJsonp([1],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(1);
-	var styles = __webpack_require__(169);
+	var styles = __webpack_require__(172);
 	
 	var Pagination = function (_React$Component) {
 	  _inherits(Pagination, _React$Component);
@@ -385,7 +385,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 169:
+/***/ 172:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

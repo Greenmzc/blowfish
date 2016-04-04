@@ -9,5 +9,6 @@ const router = require('koa-router')({
 router.use(koaBody);
 router.post('/signup', sign.signup);
 router.post('/signout', sign.signout);
+router.post('/signin', sign.signin);
 
 module.exports = router;

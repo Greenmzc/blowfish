@@ -10,5 +10,6 @@ router.use(auth.authUser);
 router.get('/', site.showIndex);
 router.get('/admin', auth.adminRequired, admin.showAdmin);
 router.get('/signup', sign.signup);
+router.get('/signin', sign.signin);
 
 module.exports = router;

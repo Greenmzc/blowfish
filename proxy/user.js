@@ -9,3 +9,11 @@ exports.createCount = function(username, password, email) {
 
   return user.save();
 };
+
+exports.getUsersByQuery = function(query) {
+  return User.find().or(query);
+};
+
+exports.getUserById = function(id) {
+  return User.findOne({ _id: id }).exec();
+};
