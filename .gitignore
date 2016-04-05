@@ -1,5 +1,4 @@
 node_modules
 *.log
 *.rdb
-static/dev/*
-*.log
+static/dev

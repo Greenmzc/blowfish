@@ -11,7 +11,7 @@ exports.createCount = function(username, password, email) {
 };
 
 exports.getUsersByQuery = function(query) {
-  return User.find().or(query);
+  return User.find(query).exec();
 };
 
 exports.getUserById = function(id) {

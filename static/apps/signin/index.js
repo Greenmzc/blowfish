@@ -44,7 +44,7 @@ class Signin extends React.Component {
       method: 'POST',
       headers: undefined,
       body: JSON.stringify({
-        username: this.state.username,
+        email: this.state.email,
         password: md5(this.state.password)
       })
     }).then(data => {
