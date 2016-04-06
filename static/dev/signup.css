@@ -39,7 +39,9 @@ a {
 .apps-signup-username, .apps-signup-password {
   outline: none;
 }
-
+.apps-signup-email {
+  border: 1px solid #000;
+}
 .apps-signup-submit {
   display: block;
   height: 30px;
@@ -47,6 +49,24 @@ a {
   text-align: center;
   line-height: 30px;
   border: 1px solid #000;
+}
+.components-inputbox-medium {
+  height: 25px;
+  width: 100px;
+  line-height: 25px;
+}
+
+.components-inputbox-default {
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.components-inputbox-warn {
+  border: 1px solid #DC143C;
+}
+
+.components-inputbox-success {
+  border: 1px solid #7FFFAA;
 }
 
 /*# sourceMappingURL=signup.css.map*/

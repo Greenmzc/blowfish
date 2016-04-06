@@ -21,6 +21,7 @@ webpackJsonp([4],{
 	var md5 = __webpack_require__(174);
 	var ajax = __webpack_require__(160);
 	var util = __webpack_require__(179);
+	var InputBox = __webpack_require__(180);
 	
 	var Signup = function (_React$Component) {
 	  _inherits(Signup, _React$Component);
@@ -44,25 +45,46 @@ webpackJsonp([4],{
 	      console.log(msg);
 	    }
 	  }, {
-	    key: 'validate',
-	    value: function validate() {
-	      var state = this.state;
-	      if (!util.emailValidate(state.email)) {
+	    key: 'checkEmail',
+	    value: function checkEmail() {
+	      if (this.state.email == '') {
+	        return 'default';
+	      }
+	
+	      if (!util.emailValidate(this.state.email)) {
 	        this.showError('邮箱不符合规则');
-	        return false;
+	        return 'warn';
 	      }
 	
-	      if (!util.usernameValidate(state.username)) {
-	        this.showError('用户名不符合规则');
-	        return false;
+	      return 'success';
+	    }
+	  }, {
+	    key: 'checkUsername',
+	    value: function checkUsername() {
+	      if (this.state.username == '') {
+	        return 'default';
 	      }
 	
-	      if (!util.passwordValidate(state.password)) {
+	      if (!util.usernameValidate(this.state.username)) {
+	        this.showError('用户名不符规则');
+	        return 'warn';
+	      }
+	
+	      return 'success';
+	    }
+	  }, {
+	    key: 'checkPassword',
+	    value: function checkPassword() {
+	      if (this.state.password == '') {
+	        return 'default';
+	      }
+	
+	      if (!util.passwordValidate(this.state.password)) {
 	        this.showError('密码长度要求为[6, 12]');
-	        return false;
+	        return 'warn';
 	      }
 	
-	      return true;
+	      return 'success';
 	    }
 	  }, {
 	    key: 'handleBlur',
@@ -72,7 +94,7 @@ webpackJsonp([4],{
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick() {
-	      if (!this.validate()) {
+	      if (!(this.checkPassword() == 'success' && this.checkUsername() == 'success' && this.checkEmail() == 'success')) {
 	        return;
 	      }
 	
@@ -96,9 +118,9 @@ webpackJsonp([4],{
 	      return React.createElement(
 	        'div',
 	        null,
-	        React.createElement('input', { className: styles.email, placeholder: 'email', onBlur: this.handleBlur.bind(this, 'email') }),
-	        React.createElement('input', { className: styles.name, placeholder: 'username', onBlur: this.handleBlur.bind(this, 'username') }),
-	        React.createElement('input', { type: 'password', className: styles.password, onBlur: this.handleBlur.bind(this, 'password'), placeholder: 'password' }),
+	        React.createElement(InputBox, { type: 'text', className: styles.email, placeholder: 'email', bfsize: 'medium', bfstyle: this.checkEmail(), onBlur: this.handleBlur.bind(this, 'email') }),
+	        React.createElement(InputBox, { type: 'text', placeholder: 'username', bfsize: 'medium', bfstyle: this.checkUsername(), onBlur: this.handleBlur.bind(this, 'username') }),
+	        React.createElement(InputBox, { type: 'password', placeholder: 'password', bfsize: 'medium', bfstyle: this.checkPassword(), onBlur: this.handleBlur.bind(this, 'password') }),
 	        React.createElement(
 	          'a',
 	          { href: 'javascript:void(0)', className: styles.submit, onClick: this.handleClick.bind(this) },
@@ -847,7 +869,7 @@ webpackJsonp([4],{
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"username":"apps-signup-username","password":"apps-signup-password","submit":"apps-signup-submit"};
+	module.exports = {"username":"apps-signup-username","password":"apps-signup-password","email":"apps-signup-email","submit":"apps-signup-submit"};
 
 /***/ },
 
@@ -872,6 +894,115 @@ webpackJsonp([4],{
 	exports.passwordValidate = function (password) {
 	  return password.length > 6 && password.length < 12;
 	};
+
+/***/ },
+
+/***/ 180:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(1);
+	var styles = __webpack_require__(181);
+	var classnames = __webpack_require__(182);
+	var util = __webpack_require__(179);
+	
+	var InputBox = function (_React$Component) {
+	  _inherits(InputBox, _React$Component);
+	
+	  function InputBox(props) {
+	    _classCallCheck(this, InputBox);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(InputBox).call(this, props));
+	  }
+	
+	  _createClass(InputBox, [{
+	    key: 'render',
+	    value: function render() {
+	      var props = this.props;
+	      var classList = classnames(styles[props.bfsize], styles[props.bfstyle], props.className);
+	      return React.createElement('input', _extends({}, props, { className: classList }));
+	    }
+	  }]);
+	
+	  return InputBox;
+	}(React.Component);
+	
+	;
+	
+	module.exports = InputBox;
+
+/***/ },
+
+/***/ 181:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"medium":"components-inputbox-medium","default":"components-inputbox-default","warn":"components-inputbox-warn","success":"components-inputbox-success"};
+
+/***/ },
+
+/***/ 182:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames() {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	})();
 
 /***/ }
 

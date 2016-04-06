@@ -7,7 +7,9 @@
 .password {
   outline: none;
 }
-
+.email {
+  border: 1px solid #000;
+}
 .submit {
   display: block;
   height: 30px;

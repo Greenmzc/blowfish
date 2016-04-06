@@ -4,6 +4,7 @@ const styles = require('./index.css');
 const md5 = require('md5');
 const ajax = require('mixins/fetch');
 const util = require('common/util');
+const InputBox = require('components/inputbox');
 
 class Signup extends React.Component {
   constructor(props) {
@@ -20,24 +21,43 @@ class Signup extends React.Component {
 console.log(msg);
   }
 
-  validate() {
-    const state = this.state;
-    if (!util.emailValidate(state.email)) {
-        this.showError('邮箱不符合规则')
-        return false;
+  checkEmail() {
+    if (this.state.email == '') {
+      return 'default';
     }
 
-    if (!util.usernameValidate(state.username)) {
-      this.showError('用户名不符合规则');
-      return false;
+    if (!util.emailValidate(this.state.email)) {
+        this.showError('邮箱不符合规则');
+        return 'warn';
     }
 
-    if (!util.passwordValidate(state.password)) {
+    return 'success';
+  }
+
+  checkUsername() {
+    if (this.state.username == '') {
+      return 'default';
+    }
+
+    if (!util.usernameValidate(this.state.username)) {
+        this.showError('用户名不符规则');
+        return 'warn';
+    }
+
+    return 'success';
+  }
+
+  checkPassword() {
+    if (this.state.password == '') {
+      return 'default';
+    }
+
+    if (!util.passwordValidate(this.state.password)) {
       this.showError('密码长度要求为[6, 12]');
-      return false;
+      return 'warn';
     }
 
-    return true;
+    return 'success';
   }
 
   handleBlur(type, event) {
@@ -47,7 +67,9 @@ console.log(msg);
   }
 
   handleClick() {
-    if (!this.validate()) {
+    if (!(this.checkPassword() == 'success' &&
+          this.checkUsername() == 'success' &&
+          this.checkEmail() == 'success')) {
       return;
     }
 
@@ -70,9 +92,9 @@ console.log(msg);
   render() {
     return (
       <div>
-        <input className={styles.email} placeholder="email" onBlur={this.handleBlur.bind(this, 'email')} />
-        <input className={styles.name} placeholder="username" onBlur={this.handleBlur.bind(this, 'username')} />
-        <input type="password" className={styles.password} onBlur={this.handleBlur.bind(this, 'password')} placeholder="password" />
+        <InputBox type="text" className={styles.email} placeholder="email" bfsize="medium" bfstyle={this.checkEmail()} onBlur={this.handleBlur.bind(this, 'email')} />
+        <InputBox type="text" placeholder="username" bfsize="medium" bfstyle={this.checkUsername()} onBlur={this.handleBlur.bind(this, 'username')} />
+        <InputBox type="password" placeholder="password" bfsize="medium" bfstyle={this.checkPassword()} onBlur={this.handleBlur.bind(this, 'password')} />
         <a href="javascript:void(0)" className={styles.submit} onClick={this.handleClick.bind(this)}>sign up</a>
       </div>
     )
