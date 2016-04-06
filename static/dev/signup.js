@@ -870,7 +870,7 @@ webpackJsonp([4],{
 	exports.usernameValidate = validateMaker('username');
 	
 	exports.passwordValidate = function (password) {
-	  return password.length > 6 && password.length < 12 ? true : false;
+	  return password.length > 6 && password.length < 12;
 	};
 
 /***/ }

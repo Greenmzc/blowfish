@@ -16,7 +16,7 @@ exports.authUser = function* (next) {
   const ep = new eventproxy();
 
   ep.fail(err => {
-console.log('err', err);
+// console.log('err', err);
     return;
   });
 
@@ -24,13 +24,13 @@ console.log('err', err);
     if (!user) {
       return;
     }
-console.log('a user', user);
+// console.log('a user', user);
     user = this.session.user = new UserModel(user);
-console.log('enhanced user', user);
+// console.log('enhanced user', user);
   });
 
   if (this.session.user) {
-console.log('user', this.session.user);
+// console.log('user', this.session.user);
     ep.emit('get_user', this.session.user);
   } else {
     //signed设置成true会去匹配blowfish.sig,如果不匹配返回undefined
@@ -39,16 +39,16 @@ console.log('user', this.session.user);
     });
 
     if (!user_id) {
-console.log('no user_id');
+// console.log('no user_id');
       return yield next;
     }
 
     try {
       const user = yield UserProxy.getUserById(user_id);
-console.log('mongoose user', user);
+// console.log('mongoose user', user);
       ep.emit('get_user', user);
     } catch(err) {
-console.log('mongoose err', err);
+// console.log('mongoose err', err);
       ep.emit('error', err);
     }
   }
