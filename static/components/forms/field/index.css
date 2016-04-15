@@ -1,0 +1,9 @@
+@import "../../../base/styles/_var.css";
+
+.warn {
+  border: 1px solid $black;
+}
+
+.success {
+  border: 1px solid $green;
+}

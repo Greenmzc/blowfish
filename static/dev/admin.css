@@ -34,5 +34,8 @@ body {
 a {
     text-decoration: none
 }
+input {
+    outline: none
+}
 
 /*# sourceMappingURL=admin.css.map*/

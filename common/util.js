@@ -9,6 +9,8 @@ function validateMaker(type) {
   }
 };
 
+exports.validateMaker = validateMaker;
+
 exports.emailValidate = validateMaker('email');
 
 exports.usernameValidate = validateMaker('username');
