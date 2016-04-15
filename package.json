@@ -1,7 +1,7 @@
 {
   "name": "blowfish",
   "version": "0.0.1",
-  "description": "koa mongodb react blog webpack",
+  "description": "blog nodejs koa react webpack redux react-redux",
   "main": "index.js",
   "scripts": {
     "dev:server": "NODE_ENV=development nodemon -i static -e json,ejs,js app.js",

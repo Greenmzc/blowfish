@@ -16,9 +16,11 @@ class Input extends React.Component {
   }
 
   render() {
-    const { isValid } = this.props;
+    const props = this.props;
+    const { isValid } = props;
     const classList = classnames(
-      isValid ? styles.success: styles.warn
+      styles[props.status],
+      props.className
     );
 
     return (

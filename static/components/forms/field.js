@@ -1,14 +1,15 @@
 const React = require('react');
-const BaseInput = require('./field/index');
-const connect = require('react-redux').connect;
+const baseField = require('./field/index');
+const { connect } = require('react-redux');
 const { blurField, focusField } = require('./actions/field');
 const util = require('common/util');
 
 const mapStateToProps = (state, ownProps) => {
-  //这样取单个field的值是不是不好
   const field = state.fields.filter(field => field.index == ownProps.index)[0];
+  const status = field && field.visited && field.value ? (field.isValid ? 'success': 'warn'): 'default';
+
   return {
-    isValid: field ? field.isValid: false
+    status: status
   }
 };
 
@@ -29,4 +30,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 module.exports = connect(
   mapStateToProps,
   mapDispatchToProps
-)(BaseInput);
+)(baseField);

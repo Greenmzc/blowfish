@@ -9,13 +9,15 @@ const _field = (state, action) => {
       return {
         index: action.index,
         value: action.value,
-        isValid: action.isValid
+        isValid: action.isValid,
+        visited: true
       };
     case FOCUS:
       return {
         index: action.index,
         value: '',
-        isValid: false
+        isValid: false,
+        visited: true
       };
     default:
       return state;

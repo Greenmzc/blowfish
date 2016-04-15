@@ -1696,7 +1696,7 @@ webpackJsonp([3],{
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	  return {
 	    isValid: ownProps.children.length == state.fields.length && state.fields.every(function (field) {
-	      return field.isValid == true;
+	      return field.isValid;
 	    })
 	  };
 	};
@@ -1829,23 +1829,27 @@ webpackJsonp([3],{
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var BaseInput = __webpack_require__(215);
-	var connect = __webpack_require__(179).connect;
+	var baseField = __webpack_require__(215);
 	
-	var _require = __webpack_require__(217);
+	var _require = __webpack_require__(179);
 	
-	var blurField = _require.blurField;
-	var focusField = _require.focusField;
+	var connect = _require.connect;
+	
+	var _require2 = __webpack_require__(217);
+	
+	var blurField = _require2.blurField;
+	var focusField = _require2.focusField;
 	
 	var util = __webpack_require__(178);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	  //这样取单个field的值是不是不好
 	  var field = state.fields.filter(function (field) {
 	    return field.index == ownProps.index;
 	  })[0];
+	  var status = field && field.visited && field.value ? field.isValid ? 'success' : 'warn' : 'default';
+	
 	  return {
-	    isValid: field ? field.isValid : false
+	    status: status
 	  };
 	};
 	
@@ -1863,7 +1867,7 @@ webpackJsonp([3],{
 	  };
 	};
 	
-	module.exports = connect(mapStateToProps, mapDispatchToProps)(BaseInput);
+	module.exports = connect(mapStateToProps, mapDispatchToProps)(baseField);
 
 /***/ },
 
@@ -1908,9 +1912,10 @@ webpackJsonp([3],{
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var isValid = this.props.isValid;
+	      var props = this.props;
+	      var isValid = props.isValid;
 	
-	      var classList = classnames(isValid ? styles.success : styles.warn);
+	      var classList = classnames(styles[props.status], props.className);
 	
 	      return React.createElement('input', _extends({}, this.props, { className: classList,
 	        onBlur: this.handleBlur.bind(this),
@@ -1931,7 +1936,7 @@ webpackJsonp([3],{
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"warn":"forms-field-warn","success":"forms-field-success"};
+	module.exports = {"warn":"forms-field-warn","success":"forms-field-success","default":"forms-field-default"};
 
 /***/ },
 
@@ -1998,13 +2003,15 @@ webpackJsonp([3],{
 	      return {
 	        index: action.index,
 	        value: action.value,
-	        isValid: action.isValid
+	        isValid: action.isValid,
+	        visited: true
 	      };
 	    case FOCUS:
 	      return {
 	        index: action.index,
 	        value: '',
-	        isValid: false
+	        isValid: false,
+	        visited: true
 	      };
 	    default:
 	      return state;

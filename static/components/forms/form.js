@@ -4,7 +4,7 @@ const { connect } = require('react-redux');
 const mapStateToProps = (state, ownProps) => {
   return {
     isValid: ownProps.children.length == state.fields.length
-      && state.fields.every(field => field.isValid == true)
+      && state.fields.every(field => field.isValid)
   };
 };
 
