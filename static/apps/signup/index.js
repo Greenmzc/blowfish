@@ -1,10 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const Provider = require('react-redux').Provider;
-const createStore = require('redux').createStore;
-const Form = require('components/forms').Form;
-const Field = require('components/forms').Field;
+const { Provider } = require('react-redux');
+const { createStore } = require('redux');
+const { Form, Field } = require('components/forms');
 const formReducers = require('components/forms/reducers');
+const styles = require('./index.css');
 
 let store = createStore(formReducers);
 

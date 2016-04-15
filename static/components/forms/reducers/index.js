@@ -1,8 +1,8 @@
-const combineReducers = require('redux').combineReducers;
-const form = require('./form');
+const { combineReducers } = require('redux');
+const fields = require('./fields');
 
 const Forms = combineReducers({
-  form
+  fields
 });
 
 module.exports = Forms;

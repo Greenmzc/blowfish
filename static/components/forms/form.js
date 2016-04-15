@@ -1,5 +1,12 @@
 const React = require('react');
-const connect = require('react-redux').connect;
+const { connect } = require('react-redux');
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isValid: ownProps.children.length == state.fields.length
+      && state.fields.every(field => field.isValid == true)
+  };
+};
 
 class Form extends React.Component {
   constructor(props) {
@@ -10,8 +17,8 @@ class Form extends React.Component {
     const { children } = this.props;
     let fields;
 
-    if (!children.length) {
-
+    if (!children || children.length == 0) {
+      throw new Error(`at least one Field is needed`);
     } else {
       fields = React.Children.map(children, (child, index) => {
         return React.cloneElement(
@@ -30,4 +37,6 @@ class Form extends React.Component {
 };
 
 
-module.exports = connect()(Form);
+module.exports = connect(
+  mapStateToProps
+)(Form);

@@ -1,43 +1,45 @@
-const input = (state, action) => {
+const { BLUR, FOCUS } = require('../consts');
+
+const _field = (state, action) => {
   switch (action.type) {
-    case 'BLUR':
+    case BLUR:
       if (action.index != state.index) {
         return state;
       }
       return {
         index: action.index,
-        visited: true,
-        value: action.value
+        value: action.value,
+        isValid: action.isValid
       };
-    case 'FOCUS':
+    case FOCUS:
       return {
         index: action.index,
-        visited: true,
-        value: ''
+        value: '',
+        isValid: false
       };
     default:
       return state;
   }
 };
 
-const form = (state = [], action) => {
+const fields = (state = [], action) => {
   switch (action.type) {
-    case 'BLUR':
+    case BLUR:
       return state.map(field => {
-        return input(field, action);
+        return _field(field, action);
       });
-    case 'FOCUS':
+    case FOCUS:
       if (state.length > 0 && state.some(field => field.index == action.index)) {
         return state;
       }
 
       return [
         ...state,
-        input(undefined, action)
+        _field(undefined, action)
       ];
     default:
       return state;
   }
 };
 
-module.exports = form;
+module.exports = fields;

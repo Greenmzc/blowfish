@@ -15,11 +15,22 @@ webpackJsonp([3],{
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var Provider = __webpack_require__(179).Provider;
-	var createStore = __webpack_require__(185).createStore;
-	var Form = __webpack_require__(202).Form;
-	var Field = __webpack_require__(202).Field;
+	
+	var _require = __webpack_require__(179);
+	
+	var Provider = _require.Provider;
+	
+	var _require2 = __webpack_require__(185);
+	
+	var createStore = _require2.createStore;
+	
+	var _require3 = __webpack_require__(202);
+	
+	var Form = _require3.Form;
+	var Field = _require3.Field;
+	
 	var formReducers = __webpack_require__(208);
+	var styles = __webpack_require__(210);
 	
 	var store = createStore(formReducers);
 	
@@ -1676,7 +1687,19 @@ webpackJsonp([3],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(1);
-	var connect = __webpack_require__(179).connect;
+	
+	var _require = __webpack_require__(179);
+	
+	var connect = _require.connect;
+	
+	
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	  return {
+	    isValid: ownProps.children.length == state.fields.length && state.fields.every(function (field) {
+	      return field.isValid == true;
+	    })
+	  };
+	};
 	
 	var Form = function (_React$Component) {
 	  _inherits(Form, _React$Component);
@@ -1694,7 +1717,9 @@ webpackJsonp([3],{
 	
 	      var fields = void 0;
 	
-	      if (!children.length) {} else {
+	      if (!children || children.length == 0) {
+	        throw new Error('at least one Field is needed');
+	      } else {
 	        fields = React.Children.map(children, function (child, index) {
 	          return React.cloneElement(child, { index: index });
 	        });
@@ -1713,7 +1738,7 @@ webpackJsonp([3],{
 	
 	;
 	
-	module.exports = connect()(Form);
+	module.exports = connect(mapStateToProps)(Form);
 
 /***/ },
 
@@ -1722,69 +1747,79 @@ webpackJsonp([3],{
 
 	'use strict';
 	
-	var combineReducers = __webpack_require__(185).combineReducers;
-	var form = __webpack_require__(209);
+	var _require = __webpack_require__(185);
+	
+	var combineReducers = _require.combineReducers;
+	
+	var fields = __webpack_require__(219);
 	
 	var Forms = combineReducers({
-	  form: form
+	  fields: fields
 	});
 	
 	module.exports = Forms;
 
 /***/ },
 
-/***/ 209:
+/***/ 210:
 /***/ function(module, exports) {
 
-	'use strict';
+	// removed by extract-text-webpack-plugin
+	module.exports = {"username":"apps-signup-username","password":"apps-signup-password","email":"apps-signup-email","submit":"apps-signup-submit"};
+
+/***/ },
+
+/***/ 213:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
 	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	(function () {
+		'use strict';
 	
-	var input = function input(state, action) {
-	  switch (action.type) {
-	    case 'BLUR':
-	      if (action.index != state.index) {
-	        return state;
-	      }
-	      return {
-	        index: action.index,
-	        visited: true,
-	        value: action.value
-	      };
-	    case 'FOCUS':
-	      return {
-	        index: action.index,
-	        visited: true,
-	        value: ''
-	      };
-	    default:
-	      return state;
-	  }
-	};
+		var hasOwn = {}.hasOwnProperty;
 	
-	var form = function form() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
-	  var action = arguments[1];
+		function classNames() {
+			var classes = [];
 	
-	  switch (action.type) {
-	    case 'BLUR':
-	      return state.map(function (field) {
-	        return input(field, action);
-	      });
-	    case 'FOCUS':
-	      if (state.length > 0 && state.some(function (field) {
-	        return field.index == action.index;
-	      })) {
-	        return state;
-	      }
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
 	
-	      return [].concat(_toConsumableArray(state), [input(undefined, action)]);
-	    default:
-	      return state;
-	  }
-	};
+				var argType = typeof arg;
 	
-	module.exports = form;
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	})();
 
 /***/ },
 
@@ -1796,18 +1831,21 @@ webpackJsonp([3],{
 	var React = __webpack_require__(1);
 	var BaseInput = __webpack_require__(215);
 	var connect = __webpack_require__(179).connect;
-	var blurField = __webpack_require__(217).blurField;
-	var focusField = __webpack_require__(217).focusField;
+	
+	var _require = __webpack_require__(217);
+	
+	var blurField = _require.blurField;
+	var focusField = _require.focusField;
+	
 	var util = __webpack_require__(178);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	  //这样取单个field的值是不是不好
-	  var field = state.form.filter(function (field) {
+	  var field = state.fields.filter(function (field) {
 	    return field.index == ownProps.index;
 	  })[0];
-	
 	  return {
-	    isValid: field ? util.validateMaker(ownProps.label)(field.value) : false
+	    isValid: field ? field.isValid : false
 	  };
 	};
 	
@@ -1815,7 +1853,9 @@ webpackJsonp([3],{
 	  return {
 	    onBlur: function onBlur(e, index) {
 	      var value = e.target.value;
-	      dispatch(blurField(value, index));
+	      var isValid = util.validateMaker(ownProps.label)(value);
+	
+	      dispatch(blurField(index, value, isValid));
 	    },
 	    onFocus: function onFocus(index) {
 	      dispatch(focusField(index));
@@ -1832,6 +1872,8 @@ webpackJsonp([3],{
 
 	'use strict';
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1842,6 +1884,7 @@ webpackJsonp([3],{
 	
 	var React = __webpack_require__(1);
 	var styles = __webpack_require__(216);
+	var classnames = __webpack_require__(213);
 	
 	var Input = function (_React$Component) {
 	  _inherits(Input, _React$Component);
@@ -1867,10 +1910,11 @@ webpackJsonp([3],{
 	    value: function render() {
 	      var isValid = this.props.isValid;
 	
+	      var classList = classnames(isValid ? styles.success : styles.warn);
 	
-	      return React.createElement('input', { className: isValid ? styles.success : styles.warn,
+	      return React.createElement('input', _extends({}, this.props, { className: classList,
 	        onBlur: this.handleBlur.bind(this),
-	        onFocus: this.handleFocus.bind(this) });
+	        onFocus: this.handleFocus.bind(this) }));
 	    }
 	  }]);
 	
@@ -1892,24 +1936,104 @@ webpackJsonp([3],{
 /***/ },
 
 /***/ 217:
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	exports.blurField = function (value, index) {
+	var _require = __webpack_require__(218);
+	
+	var BLUR = _require.BLUR;
+	var FOCUS = _require.FOCUS;
+	
+	
+	exports.blurField = function (index, value, isValid) {
 	  return {
-	    type: 'BLUR',
+	    type: BLUR,
 	    index: index,
-	    value: value
+	    value: value,
+	    isValid: isValid
 	  };
 	};
 	
 	exports.focusField = function (index) {
 	  return {
-	    type: 'FOCUS',
+	    type: FOCUS,
 	    index: index
 	  };
 	};
+
+/***/ },
+
+/***/ 218:
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = {
+	  BLUR: 'BLUR',
+	  FOCUS: 'FOCUS'
+	};
+
+/***/ },
+
+/***/ 219:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	var _require = __webpack_require__(218);
+	
+	var BLUR = _require.BLUR;
+	var FOCUS = _require.FOCUS;
+	
+	
+	var _field = function _field(state, action) {
+	  switch (action.type) {
+	    case BLUR:
+	      if (action.index != state.index) {
+	        return state;
+	      }
+	      return {
+	        index: action.index,
+	        value: action.value,
+	        isValid: action.isValid
+	      };
+	    case FOCUS:
+	      return {
+	        index: action.index,
+	        value: '',
+	        isValid: false
+	      };
+	    default:
+	      return state;
+	  }
+	};
+	
+	var fields = function fields() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	  var action = arguments[1];
+	
+	  switch (action.type) {
+	    case BLUR:
+	      return state.map(function (field) {
+	        return _field(field, action);
+	      });
+	    case FOCUS:
+	      if (state.length > 0 && state.some(function (field) {
+	        return field.index == action.index;
+	      })) {
+	        return state;
+	      }
+	
+	      return [].concat(_toConsumableArray(state), [_field(undefined, action)]);
+	    default:
+	      return state;
+	  }
+	};
+	
+	module.exports = fields;
 
 /***/ }
 

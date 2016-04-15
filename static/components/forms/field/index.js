@@ -1,5 +1,6 @@
 const React = require('react');
 const styles = require('./index.css');
+const classnames = require('classnames');
 
 class Input extends React.Component {
   constructor(props) {
@@ -16,9 +17,12 @@ class Input extends React.Component {
 
   render() {
     const { isValid } = this.props;
-    
+    const classList = classnames(
+      isValid ? styles.success: styles.warn
+    );
+
     return (
-      <input className={isValid? styles.success: styles.warn}
+      <input {...this.props} className={classList}
         onBlur={this.handleBlur.bind(this)}
         onFocus={this.handleFocus.bind(this)} />
     )

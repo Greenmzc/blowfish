@@ -1,14 +1,17 @@
-exports.blurField = (value, index) => {
+const { BLUR, FOCUS } = require('../consts');
+
+exports.blurField = (index, value, isValid) => {
   return {
-    type: 'BLUR',
+    type: BLUR,
     index,
-    value
+    value,
+    isValid
   };
 };
 
 exports.focusField = (index) => {
   return {
-    type: 'FOCUS',
+    type: FOCUS,
     index
   };
 };

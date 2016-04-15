@@ -4,16 +4,13 @@
 
 ```javascript
 {
-  isValid: false,
-  Fields: [
+  fields: [
     {
       index: 0,
-      visited: true,
       value: 'hello'
     },
     {
       index: 1,
-      visited: false,
       value: ''
     }
   ]
