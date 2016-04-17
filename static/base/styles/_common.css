@@ -9,4 +9,9 @@ a {
 
 input {
   outline: none;
+  font-size: 12px;
+}
+
+button {
+  outline: none;
 }

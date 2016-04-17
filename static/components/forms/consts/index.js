@@ -1,4 +1,2 @@
-module.exports = {
-  BLUR: 'BLUR',
-  FOCUS: 'FOCUS'
-};
+exports.BLUR = 'BLUR';
+exports.FOCUS = 'FOCUS';

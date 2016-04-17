@@ -1,0 +1,12 @@
+@import "../../base/styles/_var.css";
+
+.wrapper {
+  margin: 50px auto;
+  padding: 40px 0;
+  border: 1px solid #dae1e3;
+  background-color: #f8fbfd;
+  border-radius: 5px;
+  height: 250px;
+  width: 400px;
+  text-align: center;
+}

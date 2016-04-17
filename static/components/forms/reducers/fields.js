@@ -8,6 +8,7 @@ const _field = (state, action) => {
       }
       return {
         index: action.index,
+        key: action.key,
         value: action.value,
         isValid: action.isValid,
         visited: true
@@ -15,6 +16,7 @@ const _field = (state, action) => {
     case FOCUS:
       return {
         index: action.index,
+        key: action.key,
         value: '',
         isValid: false,
         visited: true

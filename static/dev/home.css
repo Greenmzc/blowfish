@@ -37,6 +37,9 @@ a {
 input {
     outline: none
 }
+button {
+    outline: none
+}
 .components-header-wrapper {
   text-align: center;
 }

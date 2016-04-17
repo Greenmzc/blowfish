@@ -3,49 +3,25 @@ const ReactDOM = require('react-dom');
 const styles = require('./index.css');
 const md5 = require('md5');
 const ajax = require('mixins/fetch');
-const util = require('common/util');
+const { Provider } = require('react-redux');
+const { createStore } = require('redux');
+const { Form, Field, Submit } = require('components/forms');
+const formReducers = require('components/forms/reducers');
+let store = createStore(formReducers);
 
 class Signin extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      email: '',
-      password: ''
-    }
   }
 
-  validate() {
-    const state = this.state;
-
-    if (!util.emailValidate(state.email)) {
-      return false;
-    }
-
-    if (!util.passwordValidate(state.password)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  handleBlur(type, event) {
-    this.setState({
-      [type]: event.target.value
-    });
-  }
-
-  handleClick() {
-    if (!this.validate()) {
-      return;
-    }
+  handleClick(formValue) {
 
     ajax('/api/signin', {
       method: 'POST',
       headers: undefined,
       body: JSON.stringify({
-        email: this.state.email,
-        password: md5(this.state.password)
+        email: formValue.email,
+        password: md5(formValue.password)
       })
     }).then(data => {
       if (data.isSuccess) {
@@ -56,11 +32,13 @@ class Signin extends React.Component {
 
   render() {
     return (
-      <div>
-        <input className={styles.email} placeholder="email" onBlur={this.handleBlur.bind(this, 'email')} />
-        <input type="password" className={styles.password} placeholder="password" onBlur={this.handleBlur.bind(this, 'password')} />
-        <a href="javascript:void(0)" className={styles.submit} onClick={this.handleClick.bind(this)}>sign in</a>
-      </div>
+      <Provider store={store}>
+        <Form>
+          <Field label="email" name="email" placeholder="Email Address" />
+          <Field label="password" name="password" placeholder="Password" />
+          <Submit label ="submit" text="SIGN IN" onClick={this.handleClick.bind(this)} />
+        </Form>
+      </Provider>
     )
   }
 };

@@ -28,9 +28,13 @@ const { Form, Field } = require('components/form');
 
 render() {
   return (
-    <Form>
-      <Field label="email" />
-    </Form>
+    <Provider store={store}>
+      <Form>
+        <Field label="email" />
+      </Form>
+    </Provider>
   );
 }
 ```
+### field types
+`email`

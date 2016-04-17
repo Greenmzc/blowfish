@@ -18,11 +18,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onBlur: (e, index) => {
       const value = e.target.value;
       const isValid = util.validateMaker(ownProps.label)(value);
+      const key = ownProps.name;
 
-      dispatch(blurField(index, value, isValid));
+      dispatch(blurField(index, key, value, isValid));
     },
     onFocus: (index) => {
-      dispatch(focusField(index));
+      const key = ownProps.name;
+      dispatch(focusField(index, key));
     }
   }
 };

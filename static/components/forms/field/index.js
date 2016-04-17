@@ -2,7 +2,7 @@ const React = require('react');
 const styles = require('./index.css');
 const classnames = require('classnames');
 
-class Input extends React.Component {
+class Field extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -20,15 +20,26 @@ class Input extends React.Component {
     const { isValid } = props;
     const classList = classnames(
       styles[props.status],
-      props.className
+      props.className,
+      styles.basic
     );
 
+    let type;
+
+    switch (props.label) {
+      case 'password':
+        type = 'password';
+        break;
+      default:
+        type = 'text';
+    }
+
     return (
-      <input {...this.props} className={classList}
+      <input {...this.props} type={type} className={classList}
         onBlur={this.handleBlur.bind(this)}
         onFocus={this.handleFocus.bind(this)} />
     )
   }
 };
 
-module.exports = Input;
+module.exports = Field;

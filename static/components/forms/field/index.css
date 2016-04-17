@@ -1,13 +1,24 @@
 @import "../../../base/styles/_var.css";
 
+.basic {
+  height: 30px;
+  width: 275px;
+  margin: 10px 0;
+  font-size: 14px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #dae1e3;
+  padding: 3px 12px;
+  color: #666;
+}
 .warn {
-  border: 1px solid $black;
+  border: 1px solid #e25440;
 }
 
 .success {
-  border: 1px solid $green;
+  border-radius: 4px;
 }
 
 .default {
-  border: 1px solid $gray;
+  border: 1px solid #dae1e3;
 }

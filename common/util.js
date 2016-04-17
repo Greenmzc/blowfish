@@ -1,7 +1,18 @@
+/**
+ * validateMaker
+ * @param  {[string]} type [validate type]
+ * @return {[function]}      [validate function]
+ */
 function validateMaker(type) {
+  if (type == 'password') {
+    return function(password) {
+      return password.length > 6 && password.length < 12;
+    }
+  }
+
   const regMap = {
     email: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,9}$/i,
-    username: /^[a-z0-9~_]+[a-z0-9]{1,8}$/i
+    username: /^[a-z0-9]{1,8}$/i
   };
 
   return function(content) {
@@ -15,6 +26,4 @@ exports.emailValidate = validateMaker('email');
 
 exports.usernameValidate = validateMaker('username');
 
-exports.passwordValidate = function(password) {
-  return password.length > 6 && password.length < 12;
-};
+exports.passwordValidate = validateMaker('password');
