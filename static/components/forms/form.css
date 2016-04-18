@@ -6,7 +6,7 @@
   border: 1px solid #dae1e3;
   background-color: #f8fbfd;
   border-radius: 5px;
-  height: 250px;
+  min-height: 200px;
   width: 400px;
   text-align: center;
 }

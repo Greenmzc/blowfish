@@ -7,7 +7,6 @@ const formReducers = require('components/forms/reducers');
 const ajax = require('mixins/fetch');
 const md5 = require('md5');
 const styles = require('./index.css');
-
 let store = createStore(formReducers);
 
 class Signup extends React.Component {
