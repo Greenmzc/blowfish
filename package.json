@@ -7,8 +7,12 @@
     "dev:server": "NODE_ENV=development nodemon -i static -e json,ejs,js app.js",
     "dev:client": "webpack --config static/webpack.config.dev.js",
     "start": "NODE_ENV=production pm2 start app.js --name \"blowfish\" --max-memory-restart 400M",
+    "lint": "eslint *; exit 0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Phieo/blowfish.git"
@@ -49,10 +53,13 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.3.13",
     "css-loader": "^0.23.1",
+    "eslint": "^2.8.0",
+    "eslint-plugin-react": "^5.0.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "karma": "^0.13.19",
     "mocha": "^2.3.4",
     "postcss-loader": "^0.8.0",
+    "pre-commit": "^1.1.2",
     "precss": "^1.4.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.10"
