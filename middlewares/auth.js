@@ -6,7 +6,7 @@ const UserProxy = require('../proxy/user');
 
 exports.adminRequired = function* (next) {
   if (this.session.user == undefined) {
-    this.redirect('/signup');
+    this.redirect('/signin');
   } else {
     yield next;
   }

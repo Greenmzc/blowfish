@@ -1,37 +1,33 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const styles = require('./index.css');
-const ajax = require('mixins/fetch');
+const React =  require('react');
+const { render } = require('react-dom');
+const { Router, Route, IndexRoute, Link, hashHistory } = require('react-router');
+const New = require('./new');
+const Posts = require('./posts');
+const Tags = require('./tags');
 
-class Admin extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  handleClick(event) {
-    event.preventDefault();
-
-    ajax('/api/signout', {
-      method: 'POST',
-      credentials: 'same-origin'
-    })
-    .then(data => {
-      if (data.isSuccess) {
-        location.reload();
-      }
-    })
-  }
-
+class App extends React.Component {
   render() {
     return (
       <div>
-        <a href="javascript:;" onClick={this.handleClick.bind(this)}>退出</a>
+        <h1>App</h1>
+        <ul>
+          <li><Link to="/new">new</Link></li>
+          <li><Link to="/posts">Posts</Link></li>
+          <li><Link to="/tags">Tags</Link></li>
+        </ul>
+        {this.props.children}
       </div>
     )
   }
-};
+}
 
-ReactDOM.render(
-  <Admin />,
-  document.getElementById('root')
-);
+render((
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Posts} />
+      <Route path="new" component={New} />
+      <Route path="posts" component={Posts} />
+      <Route path="tags" component={Tags} />
+    </Route>
+  </Router>
+), document.getElementById('root'));

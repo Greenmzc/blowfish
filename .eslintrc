@@ -37,7 +37,6 @@ rules:
   no-console: 1 # 禁止console
   no-div-regex: 2 # 不能使用看起来像除法的正则表达式/=foo/
   no-else-return: 2 # 如果if语句里面有return,后面不能跟else语句
-  no-empty-label: 2 # 禁止使用空label
   no-empty-pattern: 2 # 禁止使用空解构模式
   no-eq-null: 2 # 禁止对null使用==或!=运算符
   no-eval: 2 # 禁止使用eval
@@ -129,6 +128,7 @@ rules:
   # func-names: 2 # 函数表达式必须有名字
   indent: # 缩进风格
     - 2
+    - 2
   # key-spacing: # 对象字面量中冒号的前后空格
   #   - 2
   #   -
@@ -160,12 +160,12 @@ rules:
     - 2
     - "single"
   # require-jsdoc: 2 # function需要参数注释
-  space-after-keywords: 2 # 关键字后面是否要空一格
+  keyword-spacing: 2 # 关键字后面是否要空一格
   space-before-blocks: 2 # 不以新行开始的块{前面要不要有空格
-  space-before-function-paren: 2 # 函数定义时括号前面要不要有空格
-  space-before-keywords: 2 # 特定关键词前要有空格
+  space-before-function-paren:
+    - 2
+    - "never"  # 函数定义时括号前面要不要有空格
   # space-infix-ops: 2 # 操作符周围要有空格
-  space-return-throw-case: 2 # return throw case后面要不要加空格
   space-unary-ops: 1 # 一元运算符的前/后要不要加空格
   spaced-comment: 1 # 注释风格要不要有空格什么的
   max-len: # 字符串最大长度
